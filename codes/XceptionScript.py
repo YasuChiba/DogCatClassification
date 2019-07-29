@@ -33,6 +33,7 @@ def save_history(history, result_file):
 img_width, img_height = 299, 299
 nb_epoch = 10
 batch_size = 20
+result_dir = "../models/Xception/"
 
 def loadAllImageFromDir(dirName):
   file_type  = 'jpg'
@@ -115,13 +116,13 @@ def first_learn():
   history = model.fit(x=imagesList, y=labelsList, batch_size=batch_size, 
             epochs=nb_epoch, verbose=1, validation_data=(validationImages,validationLabelsList), initial_epoch=0)
 
-  model.save("results/xception_finetuning_train1.h5")
-  save_history(history,"results/history1")
+  model.save(result_dir+"xception_finetuning_train1.h5")
+  save_history(history,result_dir+"history1")
 
 
 def learn(numOfTrain, trainDataNum,loadModelNumOfTrain):
 
-  model=load_model("results/xception_finetuning_train"+str(loadModelNumOfTrain)+".h5")
+  model=load_model(result_dir+"xception_finetuning_train"+str(loadModelNumOfTrain)+".h5")
   #108層までfreeze
   for layer in model.layers[:108]:
     layer.trainable = False
@@ -144,8 +145,8 @@ def learn(numOfTrain, trainDataNum,loadModelNumOfTrain):
   history = model.fit(x=imagesList, y=labelsList, batch_size=batch_size, 
             epochs=nb_epoch, verbose=1, validation_data=(validationImages,validationLabelsList), initial_epoch=0)
   
-  model.save("results/xception_finetuning_train"+str(numOfTrain)+".h5")
-  save_history(history,"results/history"+str(numOfTrain))
+  model.save(result_dir+"xception_finetuning_train"+str(numOfTrain)+".h5")
+  save_history(history,result_dir+"history"+str(numOfTrain))
 
 
 '''

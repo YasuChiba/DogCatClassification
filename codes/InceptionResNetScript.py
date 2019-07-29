@@ -31,6 +31,7 @@ def save_history(history, result_file):
 img_width, img_height = 299, 299
 nb_epoch = 10
 batch_size = 20
+result_dir = "../models/InceptionResNet_Finetuning/"
 
 def loadAllImageFromDir(dirName):
   file_type  = 'jpg'
@@ -109,13 +110,13 @@ def first_learn():
   history = model.fit(x=imagesList, y=labelsList, batch_size=batch_size, 
             epochs=nb_epoch, verbose=1, validation_data=(validationImages,validationLabelsList), initial_epoch=0)
 
-  model.save("results/inceptionResNet_finetuning_train1.h5")
-  save_history(history,"results/history1")
+  model.save(result_dir + "inceptionResNet_finetuning_train1.h5")
+  save_history(history,result_dir + "history1")
 
 
 def learn(numOfTrain, trainDataNum,loadModelNumOfTrain):
 
-  model=load_model("results/inceptionResNet_finetuning_train"+str(loadModelNumOfTrain)+".h5")
+  model=load_model(result_dir+"inceptionResNet_finetuning_train"+str(loadModelNumOfTrain)+".h5")
   # 250層以降を学習させる
   for layer in model.layers[:249]:
     layer.trainable = False
@@ -133,8 +134,8 @@ def learn(numOfTrain, trainDataNum,loadModelNumOfTrain):
   history = model.fit(x=imagesList, y=labelsList, batch_size=batch_size, 
             epochs=nb_epoch, verbose=1, validation_data=(validationImages,validationLabelsList), initial_epoch=0)
   
-  model.save("results/inceptionResNet_finetuning_train"+str(numOfTrain)+".h5")
-  save_history(history,"results/history"+str(numOfTrain))
+  model.save(result_dir+"inceptionResNet_finetuning_train"+str(numOfTrain)+".h5")
+  save_history(history,result_dir+"history"+str(numOfTrain))
 
 
 
