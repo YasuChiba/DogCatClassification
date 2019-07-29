@@ -149,9 +149,7 @@ def learn(numOfTrain, trainDataNum,loadModelNumOfTrain):
   save_history(history,result_dir+"history"+str(numOfTrain))
 
 
-'''
 first_learn()
-
 learn(2,2,1)
 learn(3,3,2)
 learn(4,4,3)
@@ -159,6 +157,5 @@ learn(5,5,4)
 learn(6,1,5)
 learn(7,2,6)
 learn(8,3,7)
-'''
 learn(9,4,8)
 learn(10,5,9)
