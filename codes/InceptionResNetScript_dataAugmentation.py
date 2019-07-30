@@ -89,12 +89,12 @@ def first_learn():
 
   train_generator,validation_generator = getDataGen(1)
 
-  '''
   history = model.fit_generator(
         train_generator,
         epochs=nb_epoch,
         validation_data=validation_generator,
         verbose = 1)
+
   '''
   history = model.fit_generator(
         train_generator,
@@ -102,7 +102,7 @@ def first_learn():
         nb_epoch=nb_epoch,
         validation_data=validation_generator,
         nb_val_samples=2000)
-
+  '''
 
   model.save(result_dir + "inceptionResNet_dataAug_finetuning_train1.h5")
   save_history(history,result_dir+"history_dataAug_1")
@@ -123,19 +123,11 @@ def learn(numOfTrain, trainDataNum,loadModelNumOfTrain):
   #model.summary()
   train_generator,validation_generator = getDataGen(trainDataNum)
 
-  '''
   history = model.fit_generator(
         train_generator,
         epochs=nb_epoch,
         validation_data=validation_generator,
         verbose = 1)
-  '''
-  history = model.fit_generator(
-        train_generator,
-        samples_per_epoch=4000,
-        nb_epoch=nb_epoch,
-        validation_data=validation_generator,
-        nb_val_samples=2000)
   
   model.save(result_dir+"inceptionResNet_dataAug_finetuning_train"+str(numOfTrain)+".h5")
   save_history(history,result_dir+"history_dataAug_"+str(numOfTrain))
