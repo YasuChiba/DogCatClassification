@@ -98,8 +98,8 @@ if __name__ == '__main__':
     cat_fail_num = cat_resultArray.count(1)
     dog_fail_num = dog_resultArray.count(0)
 
-    print(cat_fail_num)
-    print(dog_fail_num)
-    print("accuracy : ", (cat_fail_num + dog_fail_num)/(len(cat_resultArray) + len(dog_resultArray)))
+    print("cat failed  : " ,cat_fail_num)
+    print("dog failed  : ",dog_fail_num)
+    print("accuracy : ", 1 - (cat_fail_num + dog_fail_num)/(len(cat_resultArray) + len(dog_resultArray)))
 
 
