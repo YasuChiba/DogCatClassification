@@ -37,9 +37,9 @@ if __name__ == '__main__':
     if len(img_name_list) == 0:
       sys.exit(1)   
 
-    model_inception =load_model("../models/InceptionResNet_Finetuning/inceptionResNet_finetuning_train10.h5")
-    model_xception =load_model("../models/Xception/xception_finetuning_train10.h5")
-    model_vgg16 =load_model("../models/VGG_Finetuning/vgg16_finetuning_train10.h5")
+    model_inception =load_model("../models/InceptionResNet_Finetuning/inceptionResNet_finetuning_train7.h5")
+    model_xception =load_model("../models/Xception/xception_finetuning_train7.h5")
+    model_vgg16 =load_model("../models/VGG_Finetuning/vgg16_finetuning_train7.h5")
 
 
     resultArray = []  
