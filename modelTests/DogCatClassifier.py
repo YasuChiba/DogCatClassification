@@ -2,7 +2,7 @@
 import numpy as np
 from PIL import Image
 import glob
-
+import os
 
 import sys
 import csv
@@ -21,11 +21,11 @@ if __name__ == '__main__':
       print("argument 1: test pictures folder    2: output file name")
       sys.exit(1)   
 
-    from keras.applications.inception_v3 import InceptionV3,preprocess_input
+    from keras.applications.inception_v3 import InceptionV3
     from keras.applications.inception_v3 import preprocess_input as inception_preprocess_input  
-    from keras.applications.xception import Xception,preprocess_input
+    from keras.applications.xception import Xception
     from keras.applications.xception import preprocess_input as xception_preprocess_input   
-    from keras.applications.vgg16 import VGG16, preprocess_input
+    from keras.applications.vgg16 import VGG16
     from keras.applications.vgg16 import preprocess_input as vgg16_preprocess_input
     from keras.models import Sequential, Model,load_model
     from keras.preprocessing import image   
@@ -43,9 +43,7 @@ if __name__ == '__main__':
 
 
     resultArray = []  
-    index = 1
     for img_name in img_name_list:  
-      print(img_name)
       img_vgg = image.load_img(img_name, target_size=(img_width_vgg, img_height_vgg))
       img_vgg = image.img_to_array(img_vgg)
       img_vgg = vgg16_preprocess_input(img_vgg)
@@ -63,13 +61,16 @@ if __name__ == '__main__':
       sum_of_results = predictedResult_vgg[0][0] + predictedResult_inception[0][0] + predictedResult_xception[0][0]
       results_avg = sum_of_results/3
 
+
+      filename = os.path.basename(img_name)
+      filename = os.path.splitext(filename)[0]
+      print(filename)
       if results_avg >= 0.5:
-          resultArray.append([index,1])
+          resultArray.append([int(filename),1])
           print("dog" + "  " + img_name)
       else:
-          resultArray.append([index,0])
+          resultArray.append([int(filename),0])
           print("cat" + "  " + img_name)    
-      index += 1
     
 
     with open(output_file_name, 'w') as f:
