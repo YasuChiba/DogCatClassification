@@ -92,14 +92,17 @@ if __name__ == '__main__':
           dog_resultArray.append(0)
           print("cat" + "  " + img_name)
         
-    print(len(cat_resultArray))
-    print(len(dog_resultArray))
+    print("cat total num : ",len(cat_resultArray))
+    print("dog total num : ",len(dog_resultArray))
 
     cat_fail_num = cat_resultArray.count(1)
     dog_fail_num = dog_resultArray.count(0)
 
     print("cat failed  : " ,cat_fail_num)
-    print("dog failed  : ",dog_fail_num)
-    print("accuracy : ", 1 - (cat_fail_num + dog_fail_num)/(len(cat_resultArray) + len(dog_resultArray)))
+    print("dog failed  : ", dog_fail_num)
+    
+    print("cat accuracy ", 1 - cat_fail_num / len(cat_resultArray))
+    print("dog accuracy ", 1 - dog_fail_num/len(dog_resultArray))
+    print("total ccuracy : ", 1 - (cat_fail_num + dog_fail_num)/(len(cat_resultArray) + len(dog_resultArray)))
 
 
