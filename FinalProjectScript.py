@@ -25,8 +25,8 @@ if __name__ == '__main__':
     from keras.preprocessing import image   
 
  
-    cat_img_name_list = glob.glob("./original_data/cat" + '/*.' + "jpg")
-    dog_img_name_list = glob.glob("./original_data/dog" + '/*.' + "jpg")
+    cat_img_name_list = glob.glob("./test/cat" + '/*')
+    dog_img_name_list = glob.glob("./test/dog" + '/*')
     print("num of image  cat :  "+ str(len(cat_img_name_list)))   
     print("num of image  dog :  "+ str(len(dog_img_name_list)))   
 
