@@ -65,7 +65,7 @@ if __name__ == '__main__':
     
 
     dog_resultArray = []  
-    for img_name in cat_img_name_list:  
+    for img_name in dog_img_name_list:  
       img_vgg = image.load_img(img_name, target_size=(img_width_vgg, img_height_vgg))
       img_vgg = image.img_to_array(img_vgg)
       img_vgg = vgg16_preprocess_input(img_vgg)
