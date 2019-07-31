@@ -45,6 +45,7 @@ if __name__ == '__main__':
     resultArray = []  
     index = 1
     for img_name in img_name_list:  
+      print(img_name)
       img_vgg = image.load_img(img_name, target_size=(img_width_vgg, img_height_vgg))
       img_vgg = image.img_to_array(img_vgg)
       img_vgg = vgg16_preprocess_input(img_vgg)
